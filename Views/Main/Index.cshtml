@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Task3.Data.ApplicationUser> 
+
+@{
+    ViewData["Title"] = "List of users";
+}
+<div>
+<form method="post">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button asp-action="MultiDelete" type="submit" class="btn btn-primary">Delete</button>
+        <button asp-action="MultiBlock" type="submit" class="btn btn-primary">Block</button>
+        <button asp-action="MultiUnblock" type="submit" class="btn btn-primary">UnBlock</button>
+    </nav>
+    <table class="table table-bordered">
+        <caption>Table of info about users</caption>
+        <tr>
+            <td class="text-center">Selection 
+                <div>
+                    <input type="checkbox" name="All" class="selectall"/>
+                    <label for="selectall">Select/Unselect all</label>
+                </div>
+            </td>
+            <td class="text-center">Id</td>
+            <td class="text-center">Email</td>
+            <td class="text-center">UserName</td>
+            <td class="text-center">Registration date</td>
+            <td class="text-center">Last login time</>
+            <td class="text-center">Status</td>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td class="text-center"> 
+                    <input id="Group" type="checkbox" name="Group" value = "@user.Id"/>  
+                </td>
+                <td>@user.Id</td>
+                <td>@user.Email</td>
+                <td>@user.UserName</td>
+                <td>@user.RegistrationDate.ToString("dd/MM/yyyy")</td>
+                <td>@user.LastLogDate</td>
+                <td>@user.Status</td>
+            </tr>
+        }
+    </table>
+</form>
+</div>
