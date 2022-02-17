@@ -59,7 +59,7 @@ namespace Task3.Controllers
             if (BlockedUser)
             {
                 await _signInManager.SignOutAsync();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
         }
